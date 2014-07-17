@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang = "en">
+<head>
+	<title>Data Collection Screen</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="style.css">
+
+	<script src="script.js"></script>
+</head>
+<body>
+	<table>
+		<tr>
+			<td><h1 id="player1"></h1></td>
+			<td><h1 id="player2"></h1></td>
+		</tr>
+		<tr id="scorerow">
+			<td id="playerALegScore">501</td>
+			<td id="playerBLegScore">501</td>
+		</tr>
+		<tr id="legsrow">
+			<td id="totalALegs">0</td>
+			<td id="totalBLegs">0</td>
+		</tr>
+		<tr id="averagerow">
+			<td id="playerAAverage"></td>
+			<td id="playerBAverage"></td>
+		</tr>
+		<tr id="doublesrow">
+			<td></td>
+			<td></td>
+		</tr>
+	</table>
+	<canvas id = "hit" width="500" height="500"></canvas>
+	<canvas id = "aimedat" width="500" height="500"></canvas>
+	<button id="undo">Undo Last Point</button>
+	<table id="doubles">
+		<tr>
+			<th>Double</th>
+			<th>Percentage</th>
+		</tr>
+	</table>
+	<script>
+		var table = document.getElementById("doubles");
+		for (var i =1; i < 21; i++) {
+			var row = document.createElement("tr");
+			var cell = document.createElement("td");
+			var cell2 = document.createElement("td");
+			cell.innerHTML=i;
+			row.appendChild(cell);
+			row.appendChild(cell2);
+			table.appendChild(row);
+		}
+	</script>
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+</body>
+</html>
