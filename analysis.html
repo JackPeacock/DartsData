@@ -1,0 +1,18 @@
+<table id="doubles">
+		<tr>
+			<th>Double</th>
+			<th>Percentage</th>
+		</tr>
+</table>
+<script>
+		var table = document.getElementById("doubles");
+		for (var i =1; i < 21; i++) {
+			var row = document.createElement("tr");
+			var cell = document.createElement("td");
+			var cell2 = document.createElement("td");
+			cell.innerHTML=i;
+			row.appendChild(cell);
+			row.appendChild(cell2);
+			table.appendChild(row);
+		}
+</script>

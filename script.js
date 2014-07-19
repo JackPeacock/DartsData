@@ -1,86 +1,121 @@
+// Global Variables to keep track of players' scores
 var scoreA = 501;
 var scoreB = 501;
+// Global Variables to keep track of number of legs
 var legsA = 0;
 var legsB = 0;
-
+// Global Variables which will contain all the darts objects of either player
 var arrayA = [];
 var arrayB = [];
+// Make Tables Available everywhere
+var playerATable = document.getElementById("playerATable");
+var playerBTable = document.getElementById("playerBTable");
+
+var recordingPlayer = "A";
+var aimedAtRecording = "A";
+
+var dartsInTheLegCounter = 0;
+
+var playerAJSON = {
+	meta: {
+		name:"",
+		date: new Date(),
+		competition:"World Matchplay 2014",
+		round:""
+	},
+	darts: arrayA
+}
+
+var playerBJSON = {
+	meta: {
+		name:"",
+		date: new Date(),
+		competition:"World Matchplay 2014",
+		round:""
+	},
+	darts: arrayB
+}
+
+// Want these available everywhere for the time being.
+var dartboardnumbers = [11,8,16,7,19,3,17,2,15,10,6,13,4,18,1,20,5,12,9,14,11];
+
+// Get the names of the players
+var player1 = prompt("Player throwing first?");
+var player2 = prompt("Player throwing second?");
+var round = prompt("Which round of the competition?")
+player1element = document.getElementById("player1");
+player2element = document.getElementById("player2");
+player1element.innerHTML = player1;
+player2element.innerHTML = player2;
+playerAJSON.meta.name = player1;
+playerBJSON.meta.name = player2;
+playerAJSON.meta.round = round;
+playerBJSON.meta.round = round;
+
+undo = document.getElementById("undo");
+bounceOut = document.getElementById("bounceOut");
+// showArrayButton = document.getElementById("showArrayButton");
+
+//click handlers for canvases
+hit.addEventListener("click", recordHitClick, false);
+aimedat.addEventListener("click", recordAimedAtClick, false);
+undo.addEventListener("click", undoLastPoint, false);
+bounceOut.addEventListener("click", recordBounceOut, false);
+// showArrayButton.addEventListener("click", showArray, false);
 
 // dart objector constructor
-function dart(bed, dartScore, aimedat, legScore) {
+function dart(bed, dartScore, aimedat) {
 		this.bed=bed;
 		this.dartScore=dartScore;
 		this.aimedat=aimedat;
-		this.legScore=legScore;
-}
-
-window.onload = function() {
-	// This 4 lines grab the canvas and contexts
-	hit = document.getElementById("hit");
-	hitctx = hit.getContext("2d");
-	aimedat = document.getElementById("aimedat");
-	aimedatctx = aimedat.getContext("2d");
-	// This line grabs the undo button
-	undo = document.getElementById("undo");
-
-	// These lines translate the 0,0 coordinate to the center of the context.
-	aimedatctx.translate(250,250);
-	hitctx.translate(250,250);
-
-	// canvas artwork
-	drawCircle(220, "green");
-	drawCircle(185, "beige");
-	drawCircle(150, "green");
-	drawCircle(100, "beige");
-	drawCircle(50, "green");
-	drawCircle(24, "red");
-	drawLines();
-
-	var player1 = prompt("Player throwing first?");
-	var player2 = prompt("Player throwing second?");
-	player1element = document.getElementById("player1");
-	player2element = document.getElementById("player2");
-	player1element.innerHTML = player1;
-	player2element.innerHTML = player2;
-
-	// click handlers for canvases
-	hit.addEventListener("click", recordHitClick, false);
-	aimedat.addEventListener("click", recordAimedAtClick, false);
-	undo.addEventListener("click", undoLastPoint, false);
-}
-
-
-function drawLines() {
-	for (var angle = Math.PI/20; angle < Math.PI*(2+1/20); angle+=Math.PI/10) {
-	hitctx.beginPath();
-	hitctx.moveTo(50*Math.cos(angle), 50*Math.sin(angle));
-    hitctx.lineTo(1000*Math.cos(angle), 1000*Math.sin(angle));
-    hitctx.stroke();
-
-    aimedatctx.beginPath();
-	aimedatctx.moveTo(50*Math.cos(angle), 50*Math.sin(angle));
-    aimedatctx.lineTo(1000*Math.cos(angle), 1000*Math.sin(angle));
-    aimedatctx.stroke();
-	}
-}
-
-function drawCircle(radius, colour) {
-	hitctx.beginPath();
-	hitctx.arc(0,0,radius,0,2*Math.PI);
-	hitctx.fillStyle=colour;
-	hitctx.fill();
-
-	aimedatctx.beginPath();
-	aimedatctx.arc(0,0,radius,0,2*Math.PI);
-	aimedatctx.fillStyle=colour;
-	aimedatctx.fill();
 }
 
 function recordHitClick(e) {
-	addDart(e, hit);
+	// Gets r and theta
+	var coordinates = getRAndTheta(e, hit);
+	// Takes this information and returns a new dart object assuming a triple bed was aimed at
+	var newDart = dartboard(coordinates);
+	// Push this dart to the correct array
+	if (recordingPlayer=="A") {
+		newDart.number = arrayA.length+1;
+		arrayA.push(newDart);
+		updateVisualsForA();
+	}
+	else if (recordingPlayer=="B") {
+		newDart.number = arrayB.length+1;
+		arrayB.push(newDart);
+		updateVisualsForB();
+	}
+	updateTurnVariables();
+	endOfLegCase();
 }
 
-function addDart(e, canvas) {
+function recordAimedAtClick(e) {
+	// Gets r and theta
+	var coordinates = getRAndTheta(e, aimedat);
+	// Takes this information and returns a new dart object assuming a triple bed was aimed at
+	var newDart = dartboard(coordinates);
+	window["array"+aimedAtRecording][window["array"+aimedAtRecording].length-1].aimedat = newDart.bed;
+	correctTable();
+}
+
+function recordBounceOut() {
+	var newDart = new dart("bounceout", 0, "t20")
+	if (recordingPlayer=="A") {
+		newDart.number = arrayA.length+1;
+		arrayA.push(newDart);
+		updateVisualsForA();
+	}
+	else if (recordingPlayer=="B") {
+		newDart.number = arrayB.length+1;
+		arrayB.push(newDart);
+		updateVisualsForB();
+	}
+	updateTurnVariables();
+	endOfLegCase();
+}
+
+function getRAndTheta(e, canvas) {
 	var x, y;
 	if (e.pageX != undefined && e.pageY != undefined) {
 		x = e.pageX;
@@ -90,22 +125,18 @@ function addDart(e, canvas) {
     	x = e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
 		y = e.clientY + document.body.scrollTop + document.documentElement.scrollTop;
     }
-    x -= canvas.offsetLeft+250;
+    x -= canvas.offsetLeft+200;
     y -= canvas.offsetTop;
-    y = y + 250 - 2*y;
+    y = y + 200 - 2*y;
 
-    console.log(x, y)
-
-    var r = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2))
-    var theta = Math.atan2(y,x);
-    return dartboard(r, theta);
+    return {
+    	r : Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2)),
+    	theta : Math.atan2(y,x)
+    }
 }
 
 // Simplified version of dartboard function from project.
-function dartboard(r, theta) {
-
-    // The list of dartboard numbers starting at 6 and moving anticlockwise
-    var dartboardnumbers = [11,8,16,7,19,3,17,2,15,10,6,13,4,18,1,20,5,12,9,14,11];
+function dartboard(rAndThetaObject) {
 	var segmentcounter =0;
 
     // dubtripfactor is scaling factor for double/treble beds.
@@ -115,119 +146,223 @@ function dartboard(r, theta) {
     // Wire thickness not considered. If a dart lands on the exact position of the wire
     // the darts always comes onto the inside of the circle.
 
-	if (r <= 24) {
-		createDartObject("ibull", 50, "ibull");
+	if (rAndThetaObject.r <= 15) {
+		return new dart("ibull", 50, "ibull")
 	}
 
-	else if (r <= 50) {
-		createDartObject("obull", 25, "obull");
+	else if (rAndThetaObject.r <= 30) {
+		return new dart("obull", 25, "obull")
 	}
 
-	else if (r > 220) {
+	else if (rAndThetaObject.r > 170) {
 		dubtripfactor = 0;
 		ring = "m"
 	}
 
-	else if (r > 185 && r <= 220) {
+	else if (rAndThetaObject.r > 150 && rAndThetaObject.r <= 170) {
 		dubtripfactor = 2;
 		ring = "d";
 	}
 
-	else if (r > 100 && r <= 150) {
+	else if (rAndThetaObject.r > 100 && rAndThetaObject.r <= 125) {
 		dubtripfactor = 3;
 		ring = "t";
 	}
 
-	else if (r > 150 && r <= 185) {
+	else if (rAndThetaObject.r > 125 && rAndThetaObject.r <= 150) {
 		ring = "o";
 	}
 
-	else if (r > 50 && r <= 150) {
+	else if (rAndThetaObject.r > 30 && rAndThetaObject.r <= 125) {
 		ring = "i";
 	}
 
-	while (theta > -19*Math.PI/20) {
+	while (rAndThetaObject.theta > -19*Math.PI/20) {
 	// theta = 0 is defined as the horizontal line running through 6.
 	// Each Number has has an angle of pi/10
 	// theta > pi/20 means the coordinates are further anticlockwise than 6.
-		theta = theta-(Math.PI/10);
+		rAndThetaObject.theta = rAndThetaObject.theta-(Math.PI/10);
 		segmentcounter += 1;
 	}
 
-	number = dartboardnumbers[segmentcounter];
-	//store in private array
+	var number = dartboardnumbers[segmentcounter];
 
-	createDartObject(ring + number, number*dubtripfactor, "t"+number);
-
-}
-
-function createDartObject(bed, dartScore, aimedat) {
-	if(arrayA.length == arrayB.length) {
-		arrayA.push(new dart(bed, dartScore, aimedat, scoreA))
-		scoreA -= dartScore;
-		updatePlayerA();
+	if (ring == "m" || 2*number*dubtripfactor == window["score"+recordingPlayer]) {
+		return new dart(ring+number, number*dubtripfactor, "d"+number)
 	}
-	else if (arrayA.length%3!=0) {
-		arrayA.push(new dart(bed, dartScore, aimedat, scoreA))
-		scoreA -= dartScore;
-		updatePlayerA();
+
+	if(((recordingPlayer == "A" && scoreA > 80) || (recordingPlayer == "B" && scoreB > 80)) && (number == 5 || number ==1)) {
+		return new dart(ring+number, number*dubtripfactor, "t"+20)
 	}
-	else {
-		arrayB.push(new dart(bed, dartScore, aimedat, scoreB))
-		scoreB -= dartScore;
-		updatePlayerB();
-	}
+
+	return new dart(ring+number, number*dubtripfactor, "t"+number)
 }
 
-function recordAimedAtClick(e) {
-	var info = bedAndScore(e, aimedat);
-	darts[darts.length-1].aimedat = info.bed;
-	updateList();
+function updateVisualsForA() {
+	scoreA -= arrayA[arrayA.length-1].dartScore;
+	addDartToTable(arrayA[arrayA.length-1], "A");
+	updateAAverage();
+	var scoreAElement = document.getElementById("playerALegScore");
+	scoreAElement.innerHTML = scoreA;
 }
 
-function undoLastPoint(e) {
-	darts.splice(darts.length-1, 1);
-	updateList();
+function updateVisualsForB() {
+	scoreB -= arrayB[arrayB.length-1].dartScore;
+	addDartToTable(arrayB[arrayB.length-1], "B");
+	updateBAverage();
+	var scoreBElement = document.getElementById("playerBLegScore");
+	scoreBElement.innerHTML = scoreB;
 }
 
-function updateList() {
-	var theHTML = "";
-	for (var i=0; i < darts.length; i++) {
-		theHTML+="<li>aimed at: "+darts[i].aimedat+", hit: "+darts[i].bed+"</li>";
-	}
-	dartlist.innerHTML = theHTML;
-}
-
-function updatePlayerA() {
+function updateAAverage() {
 	var sum = 0;
 	for (var i = 0; i < arrayA.length; i++) {
 		sum += arrayA[i].dartScore;
 	}
-	var playerAverage = 3*sum/arrayA.length;
+	var playerAverage = Math.round(300*sum/arrayA.length)/100;
 	var averageElement = document.getElementById("playerAAverage");
 	averageElement.innerHTML = playerAverage;
-	var scoreAElement = document.getElementById("playerALegScore");
-	scoreAElement.innerHTML = scoreA;
-	var scoreBElement = document.getElementById("playerBLegScore");
-	var totalALegs = document.getElementById("totalALegs")
-	if (scoreA == 0) {
-		legsA++;
-		scoreA = 501;
-		scoreB = 501;
-		scoreAElement.innerHTML = scoreA;
-		scoreBElement.innerHTML = scoreB;
-		totalALegs.innerHTML = legsA;
-	}
 }
 
-function updatePlayerB() {
+function updateBAverage() {
 	var sum = 0;
 	for (var i = 0; i < arrayB.length; i++) {
 		sum += arrayB[i].dartScore;
 	}
-	var playerAverage = 3*sum/arrayB.length;
+	var playerAverage = Math.round(300*sum/arrayB.length)/100;
 	var averageElement = document.getElementById("playerBAverage");
 	averageElement.innerHTML = playerAverage;
-	var scoreBElement = document.getElementById("playerBLegScore");
-	scoreBElement.innerHTML = scoreB;
+}
+
+function correctTable() {
+	var tableString = "player" + aimedAtRecording + "Table";
+	window[tableString].deleteRow(1);
+	var dartThatNeedsUpdating = window["array"+aimedAtRecording][window["array"+aimedAtRecording].length-1];
+	addDartToTable(dartThatNeedsUpdating, aimedAtRecording);
+}
+
+///////////////////////////////////
+// These undo functions are still fucked if we need to go back a leg
+
+function undoLastPoint() {
+	var arrayString = "array" + aimedAtRecording;
+	var scoreString = "score" + aimedAtRecording;
+	var tableString = "player" + aimedAtRecording + "Table";
+	var playerLegScoreString = "player" + aimedAtRecording+ "LegScore";
+	window[scoreString] += window[arrayString][window[arrayString].length-1].dartScore;
+	window[arrayString].splice(window[arrayString].length-1, 1);
+	updateAAverage();
+	updateBAverage();
+	dartsInTheLegCounter -= 2;
+	updateTurnVariables();
+	var playerTable = document.getElementById(tableString);
+	console.log(tableString);
+	playerTable.deleteRow(1);
+	var scoreElement = document.getElementById(playerLegScoreString);
+	scoreElement.innerHTML = window[scoreString];
+}
+
+// I want to pass just a string here I think.
+function addDartToTable (dart, table) {
+	var tableString = "player" + table + "Table";
+	var arrayString = "array" + table;
+	var row = window[tableString].insertRow(1);
+	var cell1 = row.insertCell(0);
+	cell1.innerHTML = window[arrayString].length
+	var cell2 = row.insertCell(1);
+	cell2.innerHTML = dart.dartScore;
+	var cell3 = row.insertCell(2);
+	cell3.innerHTML = dart.bed;
+	var cell4 = row.insertCell(3);
+	cell4.innerHTML = dart.aimedat;
+}
+
+function endOfLegCase() {
+	if (scoreA==0) {
+		scoreA = 501;
+		scoreB = 501;
+		legsA += 1;
+		var legsACell = document.getElementById("totalALegs");
+		legsACell.innerHTML = legsA;
+		dartsInTheLegCounter = -1;
+		updateTurnVariables();
+		localStorage.setItem("playerA", JSON.stringify(playerAJSON));
+		localStorage.setItem("playerB", JSON.stringify(playerBJSON));
+	}
+	else if (scoreA<0) {
+		var dartsThrownBeforeBust = dartsInTheLegCounter%3;
+		if (dartsThrownBeforeBust==0) {
+			dartsThrownBeforeBust=3;
+		}
+		for (var i = 1; i <= dartsThrownBeforeBust; i++) {
+			scoreA += arrayA[arrayA.length-i].dartScore;
+		}
+		var scoreAElement = document.getElementById("playerALegScore");
+		scoreAElement.innerHTML = scoreA;
+		dartsInTheLegCounter += (2-dartsThrownBeforeBust);
+		updateTurnVariables();
+	}
+	else if (scoreB==0) {
+		scoreA = 501;
+		scoreB = 501;
+		legsB += 1;
+		var legsBCell = document.getElementById("totalBLegs");
+		legsBCell.innerHTML = legsB;
+		dartsInTheLegCounter = -1;
+		updateTurnVariables();
+		localStorage.setItem("playerA", JSON.stringify(playerAJSON));
+		localStorage.setItem("playerB", JSON.stringify(playerBJSON));
+	}
+	else if (scoreB <0) {
+		var dartsThrownBeforeBust = dartsInTheLegCounter%3;
+		if (dartsThrownBeforeBust==0) {
+			dartsThrownBeforeBust=3;
+		}
+		for (var i = 1; i <= dartsThrownBeforeBust; i++) {
+			scoreB += arrayB[arrayB.length-i].dartScore;
+		}
+		var scoreBElement = document.getElementById("playerBLegScore");
+		scoreBElement.innerHTML = scoreB;
+		dartsInTheLegCounter += (2-dartsThrownBeforeBust);
+		updateTurnVariables();
+	}
+}
+
+// New test function for updateTurnVariables
+function updateTurnVariables() {
+	dartsInTheLegCounter += 1;
+	if ((legsA+legsB)%2==0) {
+		if (dartsInTheLegCounter%6==0 || dartsInTheLegCounter%6==1 || dartsInTheLegCounter%6==2) {
+			recordingPlayer="A";
+		}
+		else {
+			recordingPlayer="B";
+		}
+		if (dartsInTheLegCounter%6==0 || dartsInTheLegCounter%6==4 || dartsInTheLegCounter%6==5) {
+			aimedAtRecording="B";
+		}
+		else {
+			aimedAtRecording="A";
+		}
+	}
+	else if ((legsA+legsB)%2==1) {
+		if (dartsInTheLegCounter%6==0 || dartsInTheLegCounter%6==1 || dartsInTheLegCounter%6==2) {
+			recordingPlayer="B";
+		}
+		else {
+			recordingPlayer="A";
+		}
+		if (dartsInTheLegCounter%6==0 || dartsInTheLegCounter%6==4 || dartsInTheLegCounter%6==5) {
+			aimedAtRecording="A";
+		}
+		else {
+			aimedAtRecording="B";
+		}
+	}
+	var recordingPlayerCell = document.getElementById("recordingPlayerCell");
+	recordingPlayerCell.innerHTML = recordingPlayer;
+	var aimedatPlayerCell = document.getElementById("aimedatPlayerCell");
+	aimedatPlayerCell.innerHTML = aimedAtRecording;
+	var dartsInTheLegCell = document.getElementById("dartsInTheLegCell");
+	dartsInTheLegCell.innerHTML = dartsInTheLegCounter;
 }

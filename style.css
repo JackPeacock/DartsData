@@ -4,5 +4,14 @@ canvas {
 
 th,td
 {
-padding:15px;
+padding:5px;
 }
+
+table {
+	float: left;
+}
+
+::selection {
+  color: black;
+}
+
