@@ -15,3 +15,7 @@ table {
   color: black;
 }
 
+table#fixed {
+	table-layout:fixed;
+}
+

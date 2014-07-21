@@ -52,16 +52,18 @@ playerBJSON.meta.name = player2;
 playerAJSON.meta.round = round;
 playerBJSON.meta.round = round;
 
-undo = document.getElementById("undo");
+copyA = document.getElementById("copyA");
+copyB = document.getElementById("copyB");
 bounceOut = document.getElementById("bounceOut");
-// showArrayButton = document.getElementById("showArrayButton");
+undo = document.getElementById("undo");
 
 //click handlers for canvases
 hit.addEventListener("click", recordHitClick, false);
 aimedat.addEventListener("click", recordAimedAtClick, false);
-undo.addEventListener("click", undoLastPoint, false);
+copyA.addEventListener("click", copyAToClipboard, false);
+copyB.addEventListener("click", copyBToClipboard, false);
 bounceOut.addEventListener("click", recordBounceOut, false);
-// showArrayButton.addEventListener("click", showArray, false);
+undo.addEventListener("click", undoLastPoint, false);
 
 // dart objector constructor
 function dart(bed, dartScore, aimedat) {
@@ -75,15 +77,22 @@ function recordHitClick(e) {
 	var coordinates = getRAndTheta(e, hit);
 	// Takes this information and returns a new dart object assuming a triple bed was aimed at
 	var newDart = dartboard(coordinates);
+	newDart.leg = legsA + legsB + 1;
 	// Push this dart to the correct array
 	if (recordingPlayer=="A") {
+		newDart.sB4Dart = scoreA;
+		newDart.sAfDart = scoreA - newDart.dartScore;
 		newDart.number = arrayA.length+1;
 		arrayA.push(newDart);
+		newDart.average = updateAAverage();
 		updateVisualsForA();
 	}
 	else if (recordingPlayer=="B") {
+		newDart.sB4Dart = scoreB;
+		newDart.sAfDart = scoreB - newDart.dartScore;
 		newDart.number = arrayB.length+1;
 		arrayB.push(newDart);
+		newDart.average = updateBAverage();
 		updateVisualsForB();
 	}
 	updateTurnVariables();
@@ -101,14 +110,21 @@ function recordAimedAtClick(e) {
 
 function recordBounceOut() {
 	var newDart = new dart("bounceout", 0, "t20")
+	newDart.leg = legsA + legsB + 1;
 	if (recordingPlayer=="A") {
+		newDart.sB4Dart = scoreA;
+		newDart.sAfDart = scoreA - newDart.dartScore;
 		newDart.number = arrayA.length+1;
 		arrayA.push(newDart);
+		newDart.average = updateAAverage();
 		updateVisualsForA();
 	}
 	else if (recordingPlayer=="B") {
+		newDart.sB4Dart = scoreB;
+		newDart.sAfDart = scoreB - newDart.dartScore;
 		newDart.number = arrayB.length+1;
 		arrayB.push(newDart);
+		newDart.average = updateBAverage();
 		updateVisualsForB();
 	}
 	updateTurnVariables();
@@ -151,7 +167,7 @@ function dartboard(rAndThetaObject) {
 	}
 
 	else if (rAndThetaObject.r <= 30) {
-		return new dart("obull", 25, "obull")
+		return new dart("obull", 25, "ibull")
 	}
 
 	else if (rAndThetaObject.r > 170) {
@@ -187,8 +203,18 @@ function dartboard(rAndThetaObject) {
 
 	var number = dartboardnumbers[segmentcounter];
 
-	if (ring == "m" || 2*number*dubtripfactor == window["score"+recordingPlayer]) {
+	if (ring == "m" || 2*number*dubtripfactor == window["score"+recordingPlayer] || number*dubtripfactor == window["score"+recordingPlayer]) {
 		return new dart(ring+number, number*dubtripfactor, "d"+number)
+	}
+
+	if ((ring == "i" || ring == "o") &&
+		((window["score"+recordingPlayer] - number*dubtripfactor == 32)
+		|| (window["score"+recordingPlayer] - number*dubtripfactor == 40)
+		|| (window["score"+recordingPlayer] - number*dubtripfactor == 36)
+		|| (window["score"+recordingPlayer] - number*dubtripfactor == 16)
+		|| (window["score"+recordingPlayer] - number*dubtripfactor == 24)
+		|| (window["score"+recordingPlayer] - number*dubtripfactor == 10))) {
+			return new dart(ring+number, number*dubtripfactor, ring+number)
 	}
 
 	if(((recordingPlayer == "A" && scoreA > 80) || (recordingPlayer == "B" && scoreB > 80)) && (number == 5 || number ==1)) {
@@ -201,7 +227,6 @@ function dartboard(rAndThetaObject) {
 function updateVisualsForA() {
 	scoreA -= arrayA[arrayA.length-1].dartScore;
 	addDartToTable(arrayA[arrayA.length-1], "A");
-	updateAAverage();
 	var scoreAElement = document.getElementById("playerALegScore");
 	scoreAElement.innerHTML = scoreA;
 }
@@ -209,7 +234,6 @@ function updateVisualsForA() {
 function updateVisualsForB() {
 	scoreB -= arrayB[arrayB.length-1].dartScore;
 	addDartToTable(arrayB[arrayB.length-1], "B");
-	updateBAverage();
 	var scoreBElement = document.getElementById("playerBLegScore");
 	scoreBElement.innerHTML = scoreB;
 }
@@ -222,6 +246,7 @@ function updateAAverage() {
 	var playerAverage = Math.round(300*sum/arrayA.length)/100;
 	var averageElement = document.getElementById("playerAAverage");
 	averageElement.innerHTML = playerAverage;
+	return playerAverage;
 }
 
 function updateBAverage() {
@@ -232,6 +257,7 @@ function updateBAverage() {
 	var playerAverage = Math.round(300*sum/arrayB.length)/100;
 	var averageElement = document.getElementById("playerBAverage");
 	averageElement.innerHTML = playerAverage;
+	return playerAverage;
 }
 
 function correctTable() {
@@ -284,6 +310,10 @@ function endOfLegCase() {
 		legsA += 1;
 		var legsACell = document.getElementById("totalALegs");
 		legsACell.innerHTML = legsA;
+		var scoreAElement = document.getElementById("playerALegScore");
+		scoreAElement.innerHTML = scoreA;
+		var scoreBElement = document.getElementById("playerBLegScore");
+		scoreBElement.innerHTML = scoreB;
 		dartsInTheLegCounter = -1;
 		updateTurnVariables();
 		localStorage.setItem("playerA", JSON.stringify(playerAJSON));
@@ -308,6 +338,10 @@ function endOfLegCase() {
 		legsB += 1;
 		var legsBCell = document.getElementById("totalBLegs");
 		legsBCell.innerHTML = legsB;
+		var scoreAElement = document.getElementById("playerALegScore");
+		scoreAElement.innerHTML = scoreA;
+		var scoreBElement = document.getElementById("playerBLegScore");
+		scoreBElement.innerHTML = scoreB;
 		dartsInTheLegCounter = -1;
 		updateTurnVariables();
 		localStorage.setItem("playerA", JSON.stringify(playerAJSON));
@@ -365,4 +399,12 @@ function updateTurnVariables() {
 	aimedatPlayerCell.innerHTML = aimedAtRecording;
 	var dartsInTheLegCell = document.getElementById("dartsInTheLegCell");
 	dartsInTheLegCell.innerHTML = dartsInTheLegCounter;
+}
+
+function copyAToClipboard() {
+  window.prompt("Copy to clipboard: Ctrl+C, Enter", JSON.stringify(playerAJSON));
+}
+
+function copyBToClipboard() {
+  window.prompt("Copy to clipboard: Ctrl+C, Enter", JSON.stringify(playerBJSON));
 }
