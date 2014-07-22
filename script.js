@@ -52,16 +52,12 @@ playerBJSON.meta.name = player2;
 playerAJSON.meta.round = round;
 playerBJSON.meta.round = round;
 
-copyA = document.getElementById("copyA");
-copyB = document.getElementById("copyB");
 bounceOut = document.getElementById("bounceOut");
 undo = document.getElementById("undo");
 
 //click handlers for canvases
 hit.addEventListener("click", recordHitClick, false);
 aimedat.addEventListener("click", recordAimedAtClick, false);
-copyA.addEventListener("click", copyAToClipboard, false);
-copyB.addEventListener("click", copyBToClipboard, false);
 bounceOut.addEventListener("click", recordBounceOut, false);
 undo.addEventListener("click", undoLastPoint, false);
 
@@ -162,12 +158,22 @@ function dartboard(rAndThetaObject) {
     // Wire thickness not considered. If a dart lands on the exact position of the wire
     // the darts always comes onto the inside of the circle.
 
-	if (rAndThetaObject.r <= 15) {
+	if (rAndThetaObject.r <= 15) { 
 		return new dart("ibull", 50, "ibull")
 	}
 
 	else if (rAndThetaObject.r <= 30) {
-		return new dart("obull", 25, "ibull")
+		if((window["score"+recordingPlayer] - 25 == 32)
+		|| (window["score"+recordingPlayer] - 25 == 40)
+		|| (window["score"+recordingPlayer] - 25 == 36)
+		|| (window["score"+recordingPlayer] - 25 == 16)
+		|| (window["score"+recordingPlayer] - 25 == 24)
+		|| (window["score"+recordingPlayer] - 25 == 10)) {
+			return new dart("obull", 25, "obull");
+		}
+		else {
+			return new dart("obull", 25, "ibull");
+		}
 	}
 
 	else if (rAndThetaObject.r > 170) {
@@ -203,11 +209,15 @@ function dartboard(rAndThetaObject) {
 
 	var number = dartboardnumbers[segmentcounter];
 
-	if (ring == "m" || 2*number*dubtripfactor == window["score"+recordingPlayer] || number*dubtripfactor == window["score"+recordingPlayer]) {
+	if (ring == "m" || 2*number*dubtripfactor == window["score"+recordingPlayer]) {
 		return new dart(ring+number, number*dubtripfactor, "d"+number)
 	}
 
-	if ((ring == "i" || ring == "o") &&
+	if (ring == "d" && number*dubtripfactor == window["score"+recordingPlayer]) {
+		return new dart(ring+number, number*dubtripfactor, "d"+number)
+	}
+
+	if (ring == "o" &&
 		((window["score"+recordingPlayer] - number*dubtripfactor == 32)
 		|| (window["score"+recordingPlayer] - number*dubtripfactor == 40)
 		|| (window["score"+recordingPlayer] - number*dubtripfactor == 36)
@@ -217,11 +227,47 @@ function dartboard(rAndThetaObject) {
 			return new dart(ring+number, number*dubtripfactor, ring+number)
 	}
 
-	if(((recordingPlayer == "A" && scoreA > 80) || (recordingPlayer == "B" && scoreB > 80)) && (number == 5 || number ==1)) {
-		return new dart(ring+number, number*dubtripfactor, "t"+20)
+	if(window["score"+recordingPlayer]>=70 && (number == 5 || number ==1 || number==20)) {
+		return new dart(ring+number, number*dubtripfactor, "t20");
 	}
 
-	return new dart(ring+number, number*dubtripfactor, "t"+number)
+	if(window["score"+recordingPlayer]>80 && (number == 7 || number == 3 || number==19)) {
+		return new dart(ring+number, number*dubtripfactor, "t19");
+	}
+
+	if(window["score"+recordingPlayer]>80 && (number == 4 || number==18)) {
+		return new dart(ring+number, number*dubtripfactor, "t18");
+	}
+
+	if(window["score"+recordingPlayer]>80 && (number == 2 || number==17)) {
+		return new dart(ring+number, number*dubtripfactor, "t17");
+	}
+
+	if(window["score"+recordingPlayer]<80 && (number == 2 || number==17)) {
+		return new dart(ring+number, number*dubtripfactor, "o17");
+	}
+
+	if(ring == "i" && window["score"+recordingPlayer] ==50) {
+		return new dart(ring+number, number*dubtripfactor, "ibull");
+	}
+
+	if (number == 10) {
+		return new dart(ring+number, number*dubtripfactor, "t10");
+	}
+
+	if(ring == "o" && (number == 1 || number == 2 || number == 3 || number == 4 || number == 5 || number == 6)) {
+		return new dart(ring+number, number*dubtripfactor, "o"+number);
+	}
+
+	if(ring = "o" && number ==18 && window["score"+recordingPlayer] ==38) {
+		return new dart(ring+number, number*dubtripfactor, "o18");
+	}
+
+	if(number == 15 && window["score"+recordingPlayer] == 85) {
+		return new dart(ring+number, number*dubtripfactor, "t15");
+	}
+
+	return new dart(ring+number, number*dubtripfactor, "NA");
 }
 
 function updateVisualsForA() {
@@ -319,7 +365,7 @@ function endOfLegCase() {
 		localStorage.setItem("playerA", JSON.stringify(playerAJSON));
 		localStorage.setItem("playerB", JSON.stringify(playerBJSON));
 	}
-	else if (scoreA<0) {
+	else if (scoreA<0 || scoreA == 1) {
 		var dartsThrownBeforeBust = dartsInTheLegCounter%3;
 		if (dartsThrownBeforeBust==0) {
 			dartsThrownBeforeBust=3;
@@ -347,7 +393,7 @@ function endOfLegCase() {
 		localStorage.setItem("playerA", JSON.stringify(playerAJSON));
 		localStorage.setItem("playerB", JSON.stringify(playerBJSON));
 	}
-	else if (scoreB <0) {
+	else if (scoreB <0  || scoreB == 1) {
 		var dartsThrownBeforeBust = dartsInTheLegCounter%3;
 		if (dartsThrownBeforeBust==0) {
 			dartsThrownBeforeBust=3;
@@ -399,12 +445,4 @@ function updateTurnVariables() {
 	aimedatPlayerCell.innerHTML = aimedAtRecording;
 	var dartsInTheLegCell = document.getElementById("dartsInTheLegCell");
 	dartsInTheLegCell.innerHTML = dartsInTheLegCounter;
-}
-
-function copyAToClipboard() {
-  window.prompt("Copy to clipboard: Ctrl+C, Enter", JSON.stringify(playerAJSON));
-}
-
-function copyBToClipboard() {
-  window.prompt("Copy to clipboard: Ctrl+C, Enter", JSON.stringify(playerBJSON));
 }

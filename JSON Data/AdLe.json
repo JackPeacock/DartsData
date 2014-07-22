@@ -1,0 +1,1370 @@
+{
+  "meta": {
+    "name": "AdLe",
+    "date": "2014-07-21T20:06:51.710Z",
+    "competition": "World Matchplay 2014",
+    "round": "1"
+  },
+  "darts": [
+    {
+      "bed": "i20",
+      "dartScore": 20,
+      "aimedat": "t20",
+      "leg": 1,
+      "sB4Dart": 501,
+      "sAfDart": 481,
+      "number": 1,
+      "average": 60
+    },
+    {
+      "bed": "t19",
+      "dartScore": 57,
+      "aimedat": "t19",
+      "leg": 1,
+      "sB4Dart": 481,
+      "sAfDart": 424,
+      "number": 2,
+      "average": 115.5
+    },
+    {
+      "bed": "t19",
+      "dartScore": 57,
+      "aimedat": "t19",
+      "leg": 1,
+      "sB4Dart": 424,
+      "sAfDart": 367,
+      "number": 3,
+      "average": 134
+    },
+    {
+      "bed": "t20",
+      "dartScore": 60,
+      "aimedat": "t20",
+      "leg": 1,
+      "sB4Dart": 367,
+      "sAfDart": 307,
+      "number": 4,
+      "average": 145.5
+    },
+    {
+      "bed": "t20",
+      "dartScore": 60,
+      "aimedat": "t20",
+      "leg": 1,
+      "sB4Dart": 307,
+      "sAfDart": 247,
+      "number": 5,
+      "average": 152.4
+    },
+    {
+      "bed": "i20",
+      "dartScore": 20,
+      "aimedat": "t20",
+      "leg": 1,
+      "sB4Dart": 247,
+      "sAfDart": 227,
+      "number": 6,
+      "average": 137
+    },
+    {
+      "bed": "i1",
+      "dartScore": 1,
+      "aimedat": "t20",
+      "leg": 1,
+      "sB4Dart": 227,
+      "sAfDart": 226,
+      "number": 7,
+      "average": 117.86
+    },
+    {
+      "bed": "t20",
+      "dartScore": 60,
+      "aimedat": "t20",
+      "leg": 1,
+      "sB4Dart": 226,
+      "sAfDart": 166,
+      "number": 8,
+      "average": 125.63
+    },
+    {
+      "bed": "i20",
+      "dartScore": 20,
+      "aimedat": "t20",
+      "leg": 1,
+      "sB4Dart": 166,
+      "sAfDart": 146,
+      "number": 9,
+      "average": 118.33
+    },
+    {
+      "bed": "i20",
+      "dartScore": 20,
+      "aimedat": "t20",
+      "leg": 1,
+      "sB4Dart": 146,
+      "sAfDart": 126,
+      "number": 10,
+      "average": 112.5
+    },
+    {
+      "bed": "t4",
+      "dartScore": 12,
+      "aimedat": "t18",
+      "leg": 1,
+      "sB4Dart": 126,
+      "sAfDart": 114,
+      "number": 11,
+      "average": 105.55
+    },
+    {
+      "bed": "t18",
+      "dartScore": 54,
+      "aimedat": "t18",
+      "leg": 1,
+      "sB4Dart": 114,
+      "sAfDart": 60,
+      "number": 12,
+      "average": 110.25
+    },
+    {
+      "bed": "o20",
+      "dartScore": 20,
+      "aimedat": "o20",
+      "leg": 1,
+      "sB4Dart": 60,
+      "sAfDart": 40,
+      "number": 13,
+      "average": 106.38
+    },
+    {
+      "bed": "m20",
+      "dartScore": 0,
+      "aimedat": "d20",
+      "leg": 1,
+      "sB4Dart": 40,
+      "sAfDart": 40,
+      "number": 14,
+      "average": 98.79
+    },
+    {
+      "bed": "d1",
+      "dartScore": 2,
+      "aimedat": "d20",
+      "leg": 1,
+      "sB4Dart": 40,
+      "sAfDart": 38,
+      "number": 15,
+      "average": 92.6
+    },
+    {
+      "bed": "d19",
+      "dartScore": 38,
+      "aimedat": "d19",
+      "leg": 1,
+      "sB4Dart": 38,
+      "sAfDart": 0,
+      "number": 16,
+      "average": 93.94
+    },
+    {
+      "bed": "i20",
+      "dartScore": 20,
+      "aimedat": "t20",
+      "leg": 2,
+      "sB4Dart": 501,
+      "sAfDart": 481,
+      "number": 17,
+      "average": 91.94
+    },
+    {
+      "bed": "t20",
+      "dartScore": 60,
+      "aimedat": "t20",
+      "leg": 2,
+      "sB4Dart": 481,
+      "sAfDart": 421,
+      "number": 18,
+      "average": 96.83
+    },
+    {
+      "bed": "o20",
+      "dartScore": 20,
+      "aimedat": "t20",
+      "leg": 2,
+      "sB4Dart": 421,
+      "sAfDart": 401,
+      "number": 19,
+      "average": 94.89
+    },
+    {
+      "bed": "t20",
+      "dartScore": 60,
+      "aimedat": "t20",
+      "leg": 2,
+      "sB4Dart": 401,
+      "sAfDart": 341,
+      "number": 20,
+      "average": 99.15
+    },
+    {
+      "bed": "t20",
+      "dartScore": 60,
+      "aimedat": "t20",
+      "leg": 2,
+      "sB4Dart": 341,
+      "sAfDart": 281,
+      "number": 21,
+      "average": 103
+    },
+    {
+      "bed": "t20",
+      "dartScore": 60,
+      "aimedat": "t20",
+      "leg": 2,
+      "sB4Dart": 281,
+      "sAfDart": 221,
+      "number": 22,
+      "average": 106.5
+    },
+    {
+      "bed": "i20",
+      "dartScore": 20,
+      "aimedat": "t20",
+      "leg": 2,
+      "sB4Dart": 221,
+      "sAfDart": 201,
+      "number": 23,
+      "average": 104.48
+    },
+    {
+      "bed": "o20",
+      "dartScore": 20,
+      "aimedat": "t20",
+      "leg": 2,
+      "sB4Dart": 201,
+      "sAfDart": 181,
+      "number": 24,
+      "average": 102.63
+    },
+    {
+      "bed": "i20",
+      "dartScore": 20,
+      "aimedat": "t20",
+      "leg": 2,
+      "sB4Dart": 181,
+      "sAfDart": 161,
+      "number": 25,
+      "average": 100.92
+    },
+    {
+      "bed": "i20",
+      "dartScore": 20,
+      "aimedat": "t20",
+      "leg": 2,
+      "sB4Dart": 161,
+      "sAfDart": 141,
+      "number": 26,
+      "average": 99.35
+    },
+    {
+      "bed": "ibull",
+      "dartScore": 50,
+      "aimedat": "ibull",
+      "leg": 2,
+      "sB4Dart": 141,
+      "sAfDart": 91,
+      "number": 27,
+      "average": 101.22
+    },
+    {
+      "bed": "t17",
+      "dartScore": 51,
+      "aimedat": "t17",
+      "leg": 2,
+      "sB4Dart": 91,
+      "sAfDart": 40,
+      "number": 28,
+      "average": 103.07
+    },
+    {
+      "bed": "m20",
+      "dartScore": 0,
+      "aimedat": "d20",
+      "leg": 2,
+      "sB4Dart": 40,
+      "sAfDart": 40,
+      "number": 29,
+      "average": 99.52
+    },
+    {
+      "bed": "m20",
+      "dartScore": 0,
+      "aimedat": "d20",
+      "leg": 2,
+      "sB4Dart": 40,
+      "sAfDart": 40,
+      "number": 30,
+      "average": 96.2
+    },
+    {
+      "bed": "d20",
+      "dartScore": 40,
+      "aimedat": "d20",
+      "leg": 2,
+      "sB4Dart": 40,
+      "sAfDart": 0,
+      "number": 31,
+      "average": 96.97
+    },
+    {
+      "bed": "i20",
+      "dartScore": 20,
+      "aimedat": "t20",
+      "leg": 3,
+      "sB4Dart": 501,
+      "sAfDart": 481,
+      "number": 32,
+      "average": 95.81
+    },
+    {
+      "bed": "t19",
+      "dartScore": 57,
+      "aimedat": "t19",
+      "leg": 3,
+      "sB4Dart": 481,
+      "sAfDart": 424,
+      "number": 33,
+      "average": 98.09
+    },
+    {
+      "bed": "t19",
+      "dartScore": 57,
+      "aimedat": "t19",
+      "leg": 3,
+      "sB4Dart": 424,
+      "sAfDart": 367,
+      "number": 34,
+      "average": 100.24
+    },
+    {
+      "bed": "o20",
+      "dartScore": 20,
+      "aimedat": "t20",
+      "leg": 3,
+      "sB4Dart": 367,
+      "sAfDart": 347,
+      "number": 35,
+      "average": 99.09
+    },
+    {
+      "bed": "t20",
+      "dartScore": 60,
+      "aimedat": "t20",
+      "leg": 3,
+      "sB4Dart": 347,
+      "sAfDart": 287,
+      "number": 36,
+      "average": 101.33
+    },
+    {
+      "bed": "t20",
+      "dartScore": 60,
+      "aimedat": "t20",
+      "leg": 3,
+      "sB4Dart": 287,
+      "sAfDart": 227,
+      "number": 37,
+      "average": 103.46
+    },
+    {
+      "bed": "t20",
+      "dartScore": 60,
+      "aimedat": "t20",
+      "leg": 3,
+      "sB4Dart": 227,
+      "sAfDart": 167,
+      "number": 38,
+      "average": 105.47
+    },
+    {
+      "bed": "t20",
+      "dartScore": 60,
+      "aimedat": "t20",
+      "leg": 3,
+      "sB4Dart": 167,
+      "sAfDart": 107,
+      "number": 39,
+      "average": 107.38
+    },
+    {
+      "bed": "i20",
+      "dartScore": 20,
+      "aimedat": "t20",
+      "leg": 3,
+      "sB4Dart": 107,
+      "sAfDart": 87,
+      "number": 40,
+      "average": 106.2
+    },
+    {
+      "bed": "t17",
+      "dartScore": 51,
+      "aimedat": "t17",
+      "leg": 3,
+      "sB4Dart": 87,
+      "sAfDart": 36,
+      "number": 41,
+      "average": 107.34
+    },
+    {
+      "bed": "d18",
+      "dartScore": 36,
+      "aimedat": "d18",
+      "leg": 3,
+      "sB4Dart": 36,
+      "sAfDart": 0,
+      "number": 42,
+      "average": 107.36
+    },
+    {
+      "bed": "t20",
+      "dartScore": 60,
+      "aimedat": "t20",
+      "leg": 4,
+      "sB4Dart": 501,
+      "sAfDart": 441,
+      "number": 43,
+      "average": 109.05
+    },
+    {
+      "bed": "o20",
+      "dartScore": 20,
+      "aimedat": "t20",
+      "leg": 4,
+      "sB4Dart": 441,
+      "sAfDart": 421,
+      "number": 44,
+      "average": 107.93
+    },
+    {
+      "bed": "t20",
+      "dartScore": 60,
+      "aimedat": "t20",
+      "leg": 4,
+      "sB4Dart": 421,
+      "sAfDart": 361,
+      "number": 45,
+      "average": 109.53
+    },
+    {
+      "bed": "i20",
+      "dartScore": 20,
+      "aimedat": "t20",
+      "leg": 4,
+      "sB4Dart": 361,
+      "sAfDart": 341,
+      "number": 46,
+      "average": 108.46
+    },
+    {
+      "bed": "t19",
+      "dartScore": 57,
+      "aimedat": "t19",
+      "leg": 4,
+      "sB4Dart": 341,
+      "sAfDart": 284,
+      "number": 47,
+      "average": 109.79
+    },
+    {
+      "bed": "t19",
+      "dartScore": 57,
+      "aimedat": "t19",
+      "leg": 4,
+      "sB4Dart": 284,
+      "sAfDart": 227,
+      "number": 48,
+      "average": 111.06
+    },
+    {
+      "bed": "t1",
+      "dartScore": 3,
+      "aimedat": "t20",
+      "leg": 4,
+      "sB4Dart": 227,
+      "sAfDart": 224,
+      "number": 49,
+      "average": 108.98
+    },
+    {
+      "bed": "t20",
+      "dartScore": 60,
+      "aimedat": "t20",
+      "leg": 4,
+      "sB4Dart": 224,
+      "sAfDart": 164,
+      "number": 50,
+      "average": 110.4
+    },
+    {
+      "bed": "t20",
+      "dartScore": 60,
+      "aimedat": "t20",
+      "leg": 4,
+      "sB4Dart": 164,
+      "sAfDart": 104,
+      "number": 51,
+      "average": 111.76
+    },
+    {
+      "bed": "i20",
+      "dartScore": 20,
+      "aimedat": "t20",
+      "leg": 4,
+      "sB4Dart": 104,
+      "sAfDart": 84,
+      "number": 52,
+      "average": 110.77
+    },
+    {
+      "bed": "o20",
+      "dartScore": 20,
+      "aimedat": "t20",
+      "leg": 4,
+      "sB4Dart": 84,
+      "sAfDart": 64,
+      "number": 53,
+      "average": 109.81
+    },
+    {
+      "bed": "o8",
+      "dartScore": 8,
+      "aimedat": "t8",
+      "leg": 4,
+      "sB4Dart": 64,
+      "sAfDart": 56,
+      "number": 54,
+      "average": 108.22
+    },
+    {
+      "bed": "o16",
+      "dartScore": 16,
+      "aimedat": "o16",
+      "leg": 4,
+      "sB4Dart": 56,
+      "sAfDart": 40,
+      "number": 55,
+      "average": 107.13
+    },
+    {
+      "bed": "o20",
+      "dartScore": 20,
+      "aimedat": "d20",
+      "leg": 4,
+      "sB4Dart": 40,
+      "sAfDart": 20,
+      "number": 56,
+      "average": 106.29
+    },
+    {
+      "bed": "o10",
+      "dartScore": 10,
+      "aimedat": "d10",
+      "leg": 4,
+      "sB4Dart": 20,
+      "sAfDart": 10,
+      "number": 57,
+      "average": 104.95
+    },
+    {
+      "bed": "d5",
+      "dartScore": 10,
+      "aimedat": "d5",
+      "leg": 4,
+      "sB4Dart": 10,
+      "sAfDart": 0,
+      "number": 58,
+      "average": 103.66
+    },
+    {
+      "bed": "i20",
+      "dartScore": 20,
+      "aimedat": "t20",
+      "leg": 5,
+      "sB4Dart": 501,
+      "sAfDart": 481,
+      "number": 59,
+      "average": 102.92
+    },
+    {
+      "bed": "i19",
+      "dartScore": 19,
+      "aimedat": "t19",
+      "leg": 5,
+      "sB4Dart": 481,
+      "sAfDart": 462,
+      "number": 60,
+      "average": 102.15
+    },
+    {
+      "bed": "t19",
+      "dartScore": 57,
+      "aimedat": "t19",
+      "leg": 5,
+      "sB4Dart": 462,
+      "sAfDart": 405,
+      "number": 61,
+      "average": 103.28
+    },
+    {
+      "bed": "t20",
+      "dartScore": 60,
+      "aimedat": "t20",
+      "leg": 5,
+      "sB4Dart": 405,
+      "sAfDart": 345,
+      "number": 62,
+      "average": 104.52
+    },
+    {
+      "bed": "t20",
+      "dartScore": 60,
+      "aimedat": "t20",
+      "leg": 5,
+      "sB4Dart": 345,
+      "sAfDart": 285,
+      "number": 63,
+      "average": 105.71
+    },
+    {
+      "bed": "i20",
+      "dartScore": 20,
+      "aimedat": "t20",
+      "leg": 5,
+      "sB4Dart": 285,
+      "sAfDart": 265,
+      "number": 64,
+      "average": 105
+    },
+    {
+      "bed": "t20",
+      "dartScore": 60,
+      "aimedat": "t20",
+      "leg": 5,
+      "sB4Dart": 265,
+      "sAfDart": 205,
+      "number": 65,
+      "average": 106.15
+    },
+    {
+      "bed": "t20",
+      "dartScore": 60,
+      "aimedat": "t20",
+      "leg": 5,
+      "sB4Dart": 205,
+      "sAfDart": 145,
+      "number": 66,
+      "average": 107.27
+    },
+    {
+      "bed": "t20",
+      "dartScore": 60,
+      "aimedat": "t20",
+      "leg": 5,
+      "sB4Dart": 145,
+      "sAfDart": 85,
+      "number": 67,
+      "average": 108.36
+    },
+    {
+      "bed": "o2",
+      "dartScore": 2,
+      "aimedat": "t2",
+      "leg": 5,
+      "sB4Dart": 85,
+      "sAfDart": 83,
+      "number": 68,
+      "average": 106.85
+    },
+    {
+      "bed": "i17",
+      "dartScore": 17,
+      "aimedat": "t17",
+      "leg": 5,
+      "sB4Dart": 83,
+      "sAfDart": 66,
+      "number": 69,
+      "average": 106.04
+    },
+    {
+      "bed": "o10",
+      "dartScore": 10,
+      "aimedat": "t10",
+      "leg": 5,
+      "sB4Dart": 66,
+      "sAfDart": 56,
+      "number": 70,
+      "average": 104.96
+    },
+    {
+      "bed": "o16",
+      "dartScore": 16,
+      "aimedat": "o16",
+      "leg": 5,
+      "sB4Dart": 56,
+      "sAfDart": 40,
+      "number": 71,
+      "average": 104.15
+    },
+    {
+      "bed": "d20",
+      "dartScore": 40,
+      "aimedat": "d20",
+      "leg": 5,
+      "sB4Dart": 40,
+      "sAfDart": 0,
+      "number": 72,
+      "average": 104.38
+    },
+    {
+      "bed": "t20",
+      "dartScore": 60,
+      "aimedat": "t20",
+      "leg": 6,
+      "sB4Dart": 501,
+      "sAfDart": 441,
+      "number": 73,
+      "average": 105.41
+    },
+    {
+      "bed": "t20",
+      "dartScore": 60,
+      "aimedat": "t20",
+      "leg": 6,
+      "sB4Dart": 441,
+      "sAfDart": 381,
+      "number": 74,
+      "average": 106.42
+    },
+    {
+      "bed": "i20",
+      "dartScore": 20,
+      "aimedat": "t20",
+      "leg": 6,
+      "sB4Dart": 381,
+      "sAfDart": 361,
+      "number": 75,
+      "average": 105.8
+    },
+    {
+      "bed": "t20",
+      "dartScore": 60,
+      "aimedat": "t20",
+      "leg": 6,
+      "sB4Dart": 361,
+      "sAfDart": 301,
+      "number": 76,
+      "average": 106.78
+    },
+    {
+      "bed": "o20",
+      "dartScore": 20,
+      "aimedat": "t20",
+      "leg": 6,
+      "sB4Dart": 301,
+      "sAfDart": 281,
+      "number": 77,
+      "average": 106.17
+    },
+    {
+      "bed": "o20",
+      "dartScore": 20,
+      "aimedat": "t20",
+      "leg": 6,
+      "sB4Dart": 281,
+      "sAfDart": 261,
+      "number": 78,
+      "average": 105.58
+    },
+    {
+      "bed": "t20",
+      "dartScore": 60,
+      "aimedat": "t20",
+      "leg": 6,
+      "sB4Dart": 261,
+      "sAfDart": 201,
+      "number": 79,
+      "average": 106.52
+    },
+    {
+      "bed": "t20",
+      "dartScore": 60,
+      "aimedat": "t20",
+      "leg": 6,
+      "sB4Dart": 201,
+      "sAfDart": 141,
+      "number": 80,
+      "average": 107.44
+    },
+    {
+      "bed": "t20",
+      "dartScore": 60,
+      "aimedat": "t20",
+      "leg": 6,
+      "sB4Dart": 141,
+      "sAfDart": 81,
+      "number": 81,
+      "average": 108.33
+    },
+    {
+      "bed": "o19",
+      "dartScore": 19,
+      "aimedat": "t19",
+      "leg": 6,
+      "sB4Dart": 81,
+      "sAfDart": 62,
+      "number": 82,
+      "average": 107.71
+    },
+    {
+      "bed": "o12",
+      "dartScore": 12,
+      "aimedat": "t12",
+      "leg": 6,
+      "sB4Dart": 62,
+      "sAfDart": 50,
+      "number": 83,
+      "average": 106.84
+    },
+    {
+      "bed": "i15",
+      "dartScore": 15,
+      "aimedat": "ibull",
+      "leg": 6,
+      "sB4Dart": 50,
+      "sAfDart": 35,
+      "number": 84,
+      "average": 106.11
+    },
+    {
+      "bed": "o19",
+      "dartScore": 19,
+      "aimedat": "o19",
+      "leg": 6,
+      "sB4Dart": 35,
+      "sAfDart": 16,
+      "number": 85,
+      "average": 105.53
+    },
+    {
+      "bed": "d8",
+      "dartScore": 16,
+      "aimedat": "d8",
+      "leg": 6,
+      "sB4Dart": 16,
+      "sAfDart": 0,
+      "number": 86,
+      "average": 104.86
+    },
+    {
+      "bed": "i20",
+      "dartScore": 20,
+      "aimedat": "t20",
+      "leg": 7,
+      "sB4Dart": 501,
+      "sAfDart": 481,
+      "number": 87,
+      "average": 104.34
+    },
+    {
+      "bed": "i19",
+      "dartScore": 19,
+      "aimedat": "t19",
+      "leg": 7,
+      "sB4Dart": 481,
+      "sAfDart": 462,
+      "number": 88,
+      "average": 103.81
+    },
+    {
+      "bed": "t19",
+      "dartScore": 57,
+      "aimedat": "t19",
+      "leg": 7,
+      "sB4Dart": 462,
+      "sAfDart": 405,
+      "number": 89,
+      "average": 104.56
+    },
+    {
+      "bed": "t20",
+      "dartScore": 60,
+      "aimedat": "t20",
+      "leg": 7,
+      "sB4Dart": 405,
+      "sAfDart": 345,
+      "number": 90,
+      "average": 105.4
+    },
+    {
+      "bed": "t20",
+      "dartScore": 60,
+      "aimedat": "t20",
+      "leg": 7,
+      "sB4Dart": 345,
+      "sAfDart": 285,
+      "number": 91,
+      "average": 106.22
+    },
+    {
+      "bed": "o5",
+      "dartScore": 5,
+      "aimedat": "t20",
+      "leg": 7,
+      "sB4Dart": 285,
+      "sAfDart": 280,
+      "number": 92,
+      "average": 105.23
+    },
+    {
+      "bed": "i20",
+      "dartScore": 20,
+      "aimedat": "t20",
+      "leg": 7,
+      "sB4Dart": 280,
+      "sAfDart": 260,
+      "number": 93,
+      "average": 104.74
+    },
+    {
+      "bed": "i20",
+      "dartScore": 20,
+      "aimedat": "t20",
+      "leg": 7,
+      "sB4Dart": 260,
+      "sAfDart": 240,
+      "number": 94,
+      "average": 104.27
+    },
+    {
+      "bed": "t1",
+      "dartScore": 3,
+      "aimedat": "t20",
+      "leg": 7,
+      "sB4Dart": 240,
+      "sAfDart": 237,
+      "number": 95,
+      "average": 103.26
+    },
+    {
+      "bed": "o20",
+      "dartScore": 20,
+      "aimedat": "t20",
+      "leg": 7,
+      "sB4Dart": 237,
+      "sAfDart": 217,
+      "number": 96,
+      "average": 102.81
+    },
+    {
+      "bed": "t20",
+      "dartScore": 60,
+      "aimedat": "t20",
+      "leg": 7,
+      "sB4Dart": 217,
+      "sAfDart": 157,
+      "number": 97,
+      "average": 103.61
+    },
+    {
+      "bed": "t20",
+      "dartScore": 60,
+      "aimedat": "t20",
+      "leg": 7,
+      "sB4Dart": 157,
+      "sAfDart": 97,
+      "number": 98,
+      "average": 104.39
+    },
+    {
+      "bed": "t19",
+      "dartScore": 57,
+      "aimedat": "t19",
+      "leg": 7,
+      "sB4Dart": 97,
+      "sAfDart": 40,
+      "number": 99,
+      "average": 105.06
+    },
+    {
+      "bed": "o20",
+      "dartScore": 20,
+      "aimedat": "d20",
+      "leg": 7,
+      "sB4Dart": 40,
+      "sAfDart": 20,
+      "number": 100,
+      "average": 104.61
+    },
+    {
+      "bed": "d10",
+      "dartScore": 20,
+      "aimedat": "d10",
+      "leg": 7,
+      "sB4Dart": 20,
+      "sAfDart": 0,
+      "number": 101,
+      "average": 104.17
+    },
+    {
+      "bed": "t5",
+      "dartScore": 15,
+      "aimedat": "t20",
+      "leg": 8,
+      "sB4Dart": 501,
+      "sAfDart": 486,
+      "number": 102,
+      "average": 103.59
+    },
+    {
+      "bed": "t20",
+      "dartScore": 60,
+      "aimedat": "t20",
+      "leg": 8,
+      "sB4Dart": 486,
+      "sAfDart": 426,
+      "number": 103,
+      "average": 104.33
+    },
+    {
+      "bed": "t20",
+      "dartScore": 60,
+      "aimedat": "t20",
+      "leg": 8,
+      "sB4Dart": 426,
+      "sAfDart": 366,
+      "number": 104,
+      "average": 105.06
+    },
+    {
+      "bed": "t20",
+      "dartScore": 60,
+      "aimedat": "t20",
+      "leg": 8,
+      "sB4Dart": 366,
+      "sAfDart": 306,
+      "number": 105,
+      "average": 105.77
+    },
+    {
+      "bed": "o20",
+      "dartScore": 20,
+      "aimedat": "t20",
+      "leg": 8,
+      "sB4Dart": 306,
+      "sAfDart": 286,
+      "number": 106,
+      "average": 105.34
+    },
+    {
+      "bed": "t20",
+      "dartScore": 60,
+      "aimedat": "t20",
+      "leg": 8,
+      "sB4Dart": 286,
+      "sAfDart": 226,
+      "number": 107,
+      "average": 106.04
+    },
+    {
+      "bed": "t20",
+      "dartScore": 60,
+      "aimedat": "t20",
+      "leg": 8,
+      "sB4Dart": 226,
+      "sAfDart": 166,
+      "number": 108,
+      "average": 106.72
+    },
+    {
+      "bed": "t20",
+      "dartScore": 60,
+      "aimedat": "t20",
+      "leg": 8,
+      "sB4Dart": 166,
+      "sAfDart": 106,
+      "number": 109,
+      "average": 107.39
+    },
+    {
+      "bed": "t20",
+      "dartScore": 60,
+      "aimedat": "t20",
+      "leg": 8,
+      "sB4Dart": 106,
+      "sAfDart": 46,
+      "number": 110,
+      "average": 108.05
+    },
+    {
+      "bed": "o10",
+      "dartScore": 10,
+      "aimedat": "o10",
+      "leg": 8,
+      "sB4Dart": 46,
+      "sAfDart": 36,
+      "number": 111,
+      "average": 107.35
+    },
+    {
+      "bed": "d18",
+      "dartScore": 36,
+      "aimedat": "d18",
+      "leg": 8,
+      "sB4Dart": 36,
+      "sAfDart": 0,
+      "number": 112,
+      "average": 107.36
+    },
+    {
+      "bed": "t20",
+      "dartScore": 60,
+      "aimedat": "t20",
+      "leg": 9,
+      "sB4Dart": 501,
+      "sAfDart": 441,
+      "number": 113,
+      "average": 108
+    },
+    {
+      "bed": "t20",
+      "dartScore": 60,
+      "aimedat": "t20",
+      "leg": 9,
+      "sB4Dart": 441,
+      "sAfDart": 381,
+      "number": 114,
+      "average": 108.63
+    },
+    {
+      "bed": "t20",
+      "dartScore": 60,
+      "aimedat": "t20",
+      "leg": 9,
+      "sB4Dart": 381,
+      "sAfDart": 321,
+      "number": 115,
+      "average": 109.25
+    },
+    {
+      "bed": "i20",
+      "dartScore": 20,
+      "aimedat": "t20",
+      "leg": 9,
+      "sB4Dart": 321,
+      "sAfDart": 301,
+      "number": 116,
+      "average": 108.83
+    },
+    {
+      "bed": "t19",
+      "dartScore": 57,
+      "aimedat": "t19",
+      "leg": 9,
+      "sB4Dart": 301,
+      "sAfDart": 244,
+      "number": 117,
+      "average": 109.36
+    },
+    {
+      "bed": "t19",
+      "dartScore": 57,
+      "aimedat": "t19",
+      "leg": 9,
+      "sB4Dart": 244,
+      "sAfDart": 187,
+      "number": 118,
+      "average": 109.88
+    },
+    {
+      "bed": "t20",
+      "dartScore": 60,
+      "aimedat": "t20",
+      "leg": 9,
+      "sB4Dart": 187,
+      "sAfDart": 127,
+      "number": 119,
+      "average": 110.47
+    },
+    {
+      "bed": "t20",
+      "dartScore": 60,
+      "aimedat": "t20",
+      "leg": 9,
+      "sB4Dart": 127,
+      "sAfDart": 67,
+      "number": 120,
+      "average": 111.05
+    },
+    {
+      "bed": "t17",
+      "dartScore": 51,
+      "aimedat": "t17",
+      "leg": 9,
+      "sB4Dart": 67,
+      "sAfDart": 16,
+      "number": 121,
+      "average": 111.4
+    },
+    {
+      "bed": "d8",
+      "dartScore": 16,
+      "aimedat": "d8",
+      "leg": 9,
+      "sB4Dart": 16,
+      "sAfDart": 0,
+      "number": 122,
+      "average": 110.88
+    },
+    {
+      "bed": "t20",
+      "dartScore": 60,
+      "aimedat": "t20",
+      "leg": 10,
+      "sB4Dart": 501,
+      "sAfDart": 441,
+      "number": 123,
+      "average": 111.44
+    },
+    {
+      "bed": "t20",
+      "dartScore": 60,
+      "aimedat": "t20",
+      "leg": 10,
+      "sB4Dart": 441,
+      "sAfDart": 381,
+      "number": 124,
+      "average": 111.99
+    },
+    {
+      "bed": "t19",
+      "dartScore": 57,
+      "aimedat": "t19",
+      "leg": 10,
+      "sB4Dart": 381,
+      "sAfDart": 324,
+      "number": 125,
+      "average": 112.46
+    },
+    {
+      "bed": "i20",
+      "dartScore": 20,
+      "aimedat": "t20",
+      "leg": 10,
+      "sB4Dart": 324,
+      "sAfDart": 304,
+      "number": 126,
+      "average": 112.05
+    },
+    {
+      "bed": "o19",
+      "dartScore": 19,
+      "aimedat": "t19",
+      "leg": 10,
+      "sB4Dart": 304,
+      "sAfDart": 285,
+      "number": 127,
+      "average": 111.61
+    },
+    {
+      "bed": "o19",
+      "dartScore": 19,
+      "aimedat": "t19",
+      "leg": 10,
+      "sB4Dart": 285,
+      "sAfDart": 266,
+      "number": 128,
+      "average": 111.19
+    },
+    {
+      "bed": "t20",
+      "dartScore": 60,
+      "aimedat": "t20",
+      "leg": 10,
+      "sB4Dart": 266,
+      "sAfDart": 206,
+      "number": 129,
+      "average": 111.72
+    },
+    {
+      "bed": "o20",
+      "dartScore": 20,
+      "aimedat": "t20",
+      "leg": 10,
+      "sB4Dart": 206,
+      "sAfDart": 186,
+      "number": 130,
+      "average": 111.32
+    },
+    {
+      "bed": "o19",
+      "dartScore": 19,
+      "aimedat": "t19",
+      "leg": 10,
+      "sB4Dart": 186,
+      "sAfDart": 167,
+      "number": 131,
+      "average": 110.91
+    },
+    {
+      "bed": "o20",
+      "dartScore": 20,
+      "aimedat": "t20",
+      "leg": 10,
+      "sB4Dart": 167,
+      "sAfDart": 147,
+      "number": 132,
+      "average": 110.52
+    },
+    {
+      "bed": "t20",
+      "dartScore": 60,
+      "aimedat": "t20",
+      "leg": 10,
+      "sB4Dart": 147,
+      "sAfDart": 87,
+      "number": 133,
+      "average": 111.05
+    },
+    {
+      "bed": "t17",
+      "dartScore": 51,
+      "aimedat": "t17",
+      "leg": 10,
+      "sB4Dart": 87,
+      "sAfDart": 36,
+      "number": 134,
+      "average": 111.36
+    },
+    {
+      "bed": "o18",
+      "dartScore": 18,
+      "aimedat": "d18",
+      "leg": 10,
+      "sB4Dart": 36,
+      "sAfDart": 18,
+      "number": 135,
+      "average": 110.93
+    },
+    {
+      "bed": "d9",
+      "dartScore": 18,
+      "aimedat": "d9",
+      "leg": 10,
+      "sB4Dart": 18,
+      "sAfDart": 0,
+      "number": 136,
+      "average": 110.51
+    }
+  ]
+}

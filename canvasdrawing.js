@@ -9,11 +9,6 @@ window.onload = function() {
 	aimedatctx.translate(200,200);
 	hitctx.translate(200,200);
 
-	// canvas artwork
-	//drawCircle(170, "red");
-	//drawCircle(150, "black");
-	//drawCircle(125, "red");
-	//drawCircle(100, "black");
 	drawBedShape(30,100, "Beige", "black", "aimedatctx");
 	drawBedShape(100, 125, "green", "red", "aimedatctx");
 	drawBedShape(125,150, "Beige", "black", "aimedatctx");
