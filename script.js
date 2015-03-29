@@ -81,6 +81,7 @@ function recordHitClick(e) {
 		newDart.number = arrayA.length+1;
 		arrayA.push(newDart);
 		newDart.average = updateAAverage();
+		calculateDoublesPercentage()
 		updateVisualsForA();
 	}
 	else if (recordingPlayer=="B") {
@@ -89,6 +90,7 @@ function recordHitClick(e) {
 		newDart.number = arrayB.length+1;
 		arrayB.push(newDart);
 		newDart.average = updateBAverage();
+		calculateDoublesPercentage()
 		updateVisualsForB();
 	}
 	updateTurnVariables();
@@ -210,7 +212,7 @@ function dartboard(rAndThetaObject) {
 	var number = dartboardnumbers[segmentcounter];
 
 	if (ring == "m" || 2*number*dubtripfactor == window["score"+recordingPlayer]) {
-		return new dart(ring+number, number*dubtripfactor, "d"+number)
+		return new dart(ring+number, number*dubtripfactor, "d"+0.5*window["score"+recordingPlayer])
 	}
 
 	if (ring == "d" && number*dubtripfactor == window["score"+recordingPlayer]) {
@@ -328,7 +330,6 @@ function undoLastPoint() {
 	dartsInTheLegCounter -= 2;
 	updateTurnVariables();
 	var playerTable = document.getElementById(tableString);
-	console.log(tableString);
 	playerTable.deleteRow(1);
 	var scoreElement = document.getElementById(playerLegScoreString);
 	scoreElement.innerHTML = window[scoreString];
@@ -344,9 +345,13 @@ function addDartToTable (dart, table) {
 	var cell2 = row.insertCell(1);
 	cell2.innerHTML = dart.dartScore;
 	var cell3 = row.insertCell(2);
-	cell3.innerHTML = dart.bed;
-	var cell4 = row.insertCell(3);
-	cell4.innerHTML = dart.aimedat;
+	cell3.innerHTML = dart.sB4Dart;
+	var cell4 = row.insertCell(2);
+	cell4.innerHTML = dart.sAfDart;
+	var cell5 = row.insertCell(4);
+	cell5.innerHTML = dart.bed;
+	var cell6 = row.insertCell(5);
+	cell6.innerHTML = dart.aimedat;
 }
 
 function endOfLegCase() {
@@ -443,6 +448,36 @@ function updateTurnVariables() {
 	recordingPlayerCell.innerHTML = recordingPlayer;
 	var aimedatPlayerCell = document.getElementById("aimedatPlayerCell");
 	aimedatPlayerCell.innerHTML = aimedAtRecording;
-	var dartsInTheLegCell = document.getElementById("dartsInTheLegCell");
-	dartsInTheLegCell.innerHTML = dartsInTheLegCounter;
+}
+
+function calculateDoublesPercentage() {
+	var attempts = 0;
+	var hit = 0;
+	for (var i = 0; i < window["array"+recordingPlayer].length; i++) {
+		if (window["array"+recordingPlayer][i].aimedat[0] == "d" && window["array"+recordingPlayer][i].aimedat.slice(1,3) == window["array"+recordingPlayer][i].sB4Dart/2) {
+			attempts += 1;
+			if (window["array"+recordingPlayer][i].sAfDart == 0) {
+				hit += 1;
+
+			}
+		}
+		if (window["array"+recordingPlayer][i].aimedat == "ibull" && window["array"+recordingPlayer][i].sB4Dart == 50) {
+			attempts += 1;
+			if (window["array"+recordingPlayer][i].bed == "ibull") {
+				hit += 1;
+			}
+		}
+	}
+	if (recordingPlayer=="A") {
+		var ADoubles = document.getElementById("ADoubles");
+		ADoubles.innerHTML = hit + "/" + attempts; 
+		var APercentage = document.getElementById("APercentage");
+		APercentage.innerHTML = (Math.round(hit*10000/attempts)/100) + "%";
+	}
+	if (recordingPlayer=="B") {
+		var BDoubles = document.getElementById("BDoubles");
+		BDoubles.innerHTML = hit + "/" + attempts;
+		var BPercentage = document.getElementById("BPercentage");
+		BPercentage.innerHTML = (Math.round(hit*10000/attempts)/100) + "%";
+	}
 }

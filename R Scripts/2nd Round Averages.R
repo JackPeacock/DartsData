@@ -1,0 +1,82 @@
+players <- "van Barneveld"
+averages <- 86.78
+result <- "Loss"
+
+players <- c(players, "Whitlock")
+averages <- c(averages, 93.54)
+result <- c(result, "Win")
+
+players <- c(players, "van Gerwen")
+averages <- c(averages, 96.75)
+result <- c(result, "Win")
+
+players <- c(players, "White")
+averages <- c(averages, 92.58)
+result <- c(result, "Loss")
+
+players <- c(players, "Wade")
+averages <- c(averages, 95.24)
+result <- c(result, "Win")
+
+players <- c(players, "Burnett")
+averages <- c(averages, 87.42)
+result <- c(result, "Loss")
+
+players <- c(players, "Hamilton")
+averages <- c(averages, 97.54)
+result <- c(result, "Loss")
+
+players <- c(players, "Chisnall")
+averages <- c(averages, 95.19)
+result <- c(result, "Win")
+
+players <- c(players, "Nicholson")
+averages <- c(averages, 83.94)
+result <- c(result, "Loss")
+
+players <- c(players, "Newton")
+averages <- c(averages, 86.62)
+result <- c(result, "Win")
+
+players <- c(players, "Anderson")
+averages <- c(averages, 104.41)
+result <- c(result, "Win")
+
+players <- c(players, "Bunting")
+averages <- c(averages, 99.37)
+result <- c(result, "Loss")
+
+players <- c(players, "Taylor")
+averages <- c(averages, 105.64)
+result <- c(result, "Win")
+
+players <- c(players, "M. Smith")
+averages <- c(averages, 100.44)
+result <- c(result, "Loss")
+
+players <- c(players, "Lewis")
+averages <- c(averages, 99.61)
+result <- c(result, "Win")
+
+players <- c(players, "King")
+averages <- c(averages, 89.59)
+result <- c(result, "Loss")
+
+result <- factor(result)
+
+df <- data.frame(players, averages, result)
+df <- df[with(df, order(-averages)), ]
+df$players <- reorder(df$players, -df$averages)
+df$result <- factor(df$result, levels(df$result)[c(2,1)])
+
+library(ggplot2)
+plot <- ggplot(data=df, aes(x=players, y=averages))
+plot <- plot + scale_fill_manual(values = c("#4CC3D9", "#93648D"))
+plot <- plot + theme(axis.text.x = element_text(angle = 90, hjust = 1))
+plot <- plot + coord_cartesian(ylim = c(60,111))
+plot <- plot + ylab("Average")
+plot <- plot + theme(axis.title.x = element_blank())
+setwd("/Users/JackPeacock/Desktop/Darts\ Business/Graphics")
+png("2ndroundaverages.png", height= 512, width=1024)
+plot + geom_bar(aes(fill=result), stat="identity")
+dev.off()

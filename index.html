@@ -32,17 +32,24 @@
 			<td id="playerBAverage"></td>
 		</tr>
 		<tr id="doublesrow">
-			<td></td>
-			<td></td>
+			<td>Doubles</td>
+			<td id="ADoubles"></td>
+			<td id="BDoubles"></td>
+		</tr>
+		<tr>
+			<td>Percentage</td>
+			<td id="APercentage"></td>
+			<td id="BPercentage"></td>
 		</tr>
 		<tr>
 			<td>Rec / AA</td>
 			<td id="recordingPlayerCell"></td>
 			<td id="aimedatPlayerCell"></td>
 		</tr>
-		<tr>
-			<td>Dart in the leg</td>
-			<td id = "dartsInTheLegCell"></td>
+		<tr id="180s">
+			<td>180s</td>
+			<td></td>
+			<td></td>
 		</tr>
 	</table>
 	<canvas id = "hit" width="400" height="400"></canvas>
@@ -50,10 +57,10 @@
 	<button id="undo">Undo Last Dart</button>
 	<button id="bounceOut">Bounce Out</button>
 	<table id="playerATable">
-		<tr><th>A #</th><th>A Dart Score</th><th>A bed hit</th><th>A aimed at</th></tr>
+		<tr><th>A #</th><th>A Dart Score</th><th>Before Dart</th><th>After Dart</th><th>A bed hit</th><th>A aimed at</th><th></tr>
 	</table>
 	<table id="playerBTable">
-		<tr><th>B #</th><th>B Dart Score</th><th>Bbed hit</th><th>B aimed at</th><tr>
+		<tr><th>B #</th><th>B Dart Score</th><th>Before Dart</th><th>After Dart</th><th>Bbed hit</th><th>B aimed at</th><tr>
 	</table>
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
