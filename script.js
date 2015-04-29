@@ -149,7 +149,7 @@ function getRAndTheta(e, canvas) {
     }
 }
 
-// Simplified version of dartboard function from project.
+// Simplified version of dartboard function from project. Now with algorithm for guessing dart aimed at.
 function dartboard(rAndThetaObject) {
 	var segmentcounter =0;
 
@@ -261,7 +261,7 @@ function dartboard(rAndThetaObject) {
 		return new dart(ring+number, number*dubtripfactor, "o"+number);
 	}
 
-	if(ring = "o" && number ==18 && window["score"+recordingPlayer] ==38) {
+	if(ring == "o" && number ==18 && window["score"+recordingPlayer] ==38) {
 		return new dart(ring+number, number*dubtripfactor, "o18");
 	}
 
@@ -270,6 +270,7 @@ function dartboard(rAndThetaObject) {
 	}
 
 	return new dart(ring+number, number*dubtripfactor, "NA");
+
 }
 
 function updateVisualsForA() {
@@ -308,6 +309,7 @@ function updateBAverage() {
 	return playerAverage;
 }
 
+// This function updates the aimed at field in the table when the aimed at canvas has been clicked.
 function correctTable() {
 	var tableString = "player" + aimedAtRecording + "Table";
 	window[tableString].deleteRow(1);
@@ -346,7 +348,7 @@ function addDartToTable (dart, table) {
 	cell2.innerHTML = dart.dartScore;
 	var cell3 = row.insertCell(2);
 	cell3.innerHTML = dart.sB4Dart;
-	var cell4 = row.insertCell(2);
+	var cell4 = row.insertCell(3);
 	cell4.innerHTML = dart.sAfDart;
 	var cell5 = row.insertCell(4);
 	cell5.innerHTML = dart.bed;
