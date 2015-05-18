@@ -62,10 +62,11 @@ bounceOut.addEventListener("click", recordBounceOut, false);
 undo.addEventListener("click", undoLastPoint, false);
 
 // dart objector constructor
-function dart(bed, dartScore, aimedat) {
+function dart(bed, dartScore, aimedat, algorithm) {
 		this.bed=bed;
 		this.dartScore=dartScore;
 		this.aimedat=aimedat;
+		this.algorithm=algorithm;
 }
 
 function recordHitClick(e) {
@@ -107,7 +108,7 @@ function recordAimedAtClick(e) {
 }
 
 function recordBounceOut() {
-	var newDart = new dart("bounceout", 0, "t20")
+	var newDart = new dart("bounceout", 0, "t20", 1)
 	newDart.leg = legsA + legsB + 1;
 	if (recordingPlayer=="A") {
 		newDart.sB4Dart = scoreA;
@@ -161,7 +162,7 @@ function dartboard(rAndThetaObject) {
     // the darts always comes onto the inside of the circle.
 
 	if (rAndThetaObject.r <= 15) { 
-		return new dart("ibull", 50, "ibull")
+		return new dart("ibull", 50, "ibull", 2)
 	}
 
 	else if (rAndThetaObject.r <= 30) {
@@ -171,16 +172,16 @@ function dartboard(rAndThetaObject) {
 		|| (window["score"+recordingPlayer] - 25 == 16)
 		|| (window["score"+recordingPlayer] - 25 == 24)
 		|| (window["score"+recordingPlayer] - 25 == 10)) {
-			return new dart("obull", 25, "obull");
+			return new dart("obull", 25, "obull", 3);
 		}
 		else {
-			return new dart("obull", 25, "ibull");
+			return new dart("obull", 25, "ibull", 4);
 		}
 	}
 
 	else if (rAndThetaObject.r > 170) {
 		dubtripfactor = 0;
-		ring = "m"
+		ring = "m";
 	}
 
 	else if (rAndThetaObject.r > 150 && rAndThetaObject.r <= 170) {
@@ -212,11 +213,11 @@ function dartboard(rAndThetaObject) {
 	var number = dartboardnumbers[segmentcounter];
 
 	if (ring == "m" || 2*number*dubtripfactor == window["score"+recordingPlayer]) {
-		return new dart(ring+number, number*dubtripfactor, "d"+0.5*window["score"+recordingPlayer])
+		return new dart(ring+number, number*dubtripfactor, "d"+0.5*window["score"+recordingPlayer], 5)
 	}
 
 	if (ring == "d" && number*dubtripfactor == window["score"+recordingPlayer]) {
-		return new dart(ring+number, number*dubtripfactor, "d"+number)
+		return new dart(ring+number, number*dubtripfactor, "d"+number, 6)
 	}
 
 	if (ring == "o" &&
@@ -226,50 +227,46 @@ function dartboard(rAndThetaObject) {
 		|| (window["score"+recordingPlayer] - number*dubtripfactor == 16)
 		|| (window["score"+recordingPlayer] - number*dubtripfactor == 24)
 		|| (window["score"+recordingPlayer] - number*dubtripfactor == 10))) {
-			return new dart(ring+number, number*dubtripfactor, ring+number)
+			return new dart(ring+number, number*dubtripfactor, ring+number, 7)
 	}
 
 	if(window["score"+recordingPlayer]>=70 && (number == 5 || number ==1 || number==20)) {
-		return new dart(ring+number, number*dubtripfactor, "t20");
+		return new dart(ring+number, number*dubtripfactor, "t20", 8);
 	}
 
 	if(window["score"+recordingPlayer]>80 && (number == 7 || number == 3 || number==19)) {
-		return new dart(ring+number, number*dubtripfactor, "t19");
+		return new dart(ring+number, number*dubtripfactor, "t19", 9);
 	}
 
 	if(window["score"+recordingPlayer]>80 && (number == 4 || number==18)) {
-		return new dart(ring+number, number*dubtripfactor, "t18");
+		return new dart(ring+number, number*dubtripfactor, "t18", 10);
 	}
 
 	if(window["score"+recordingPlayer]>80 && (number == 2 || number==17)) {
-		return new dart(ring+number, number*dubtripfactor, "t17");
-	}
-
-	if(window["score"+recordingPlayer]<80 && (number == 2 || number==17)) {
-		return new dart(ring+number, number*dubtripfactor, "o17");
+		return new dart(ring+number, number*dubtripfactor, "t17", 11);
 	}
 
 	if(ring == "i" && window["score"+recordingPlayer] ==50) {
-		return new dart(ring+number, number*dubtripfactor, "ibull");
+		return new dart(ring+number, number*dubtripfactor, "ibull", 12);
 	}
 
 	if (number == 10) {
-		return new dart(ring+number, number*dubtripfactor, "t10");
+		return new dart(ring+number, number*dubtripfactor, "t10", 13);
 	}
 
 	if(ring == "o" && (number == 1 || number == 2 || number == 3 || number == 4 || number == 5 || number == 6)) {
-		return new dart(ring+number, number*dubtripfactor, "o"+number);
+		return new dart(ring+number, number*dubtripfactor, "o"+number, 14);
 	}
 
 	if(ring == "o" && number ==18 && window["score"+recordingPlayer] ==38) {
-		return new dart(ring+number, number*dubtripfactor, "o18");
+		return new dart(ring+number, number*dubtripfactor, "o18", 15);
 	}
 
 	if(number == 15 && window["score"+recordingPlayer] == 85) {
-		return new dart(ring+number, number*dubtripfactor, "t15");
+		return new dart(ring+number, number*dubtripfactor, "t15", 16);
 	}
 
-	return new dart(ring+number, number*dubtripfactor, "NA");
+	return new dart(ring+number, number*dubtripfactor, "NA", 17);
 
 }
 
