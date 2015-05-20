@@ -1,0 +1,67 @@
+---
+title: "CSV Match Statistics"
+author: "Jack Peacock"
+date: "20 May 2015"
+output: html_document
+---
+
+# Match Statistics Report
+
+```{r echo=FALSE, include=FALSE}
+## Set the working directory of the game you are interested in
+
+setwd("~/Documents/Darts Business/JSON Data/Premier League/Week 15/lewisanderson/")
+
+## Set the name of the players
+
+playerA = "lewis"
+playerB = "anderson"
+
+## This following code does not need to be touched it will produce the statistics.
+
+library(Hmisc)
+
+adf <- read.csv(paste(playerA, ".csv", sep=""))
+bdf <- read.csv(paste(playerB, ".csv", sep=""))
+cols = c(4, 5)    
+adf[,cols] = apply(adf[,cols], 2, function(x) as.character(x))
+bdf[,cols] = apply(bdf[,cols], 2, function(x) as.character(x))
+```
+
+```{r echo=FALSE}
+paste("These are the Statisitcs for the match between", capitalize(playerA), capitalize(playerB))
+```
+
+Triple percentage
+
+```{r echo=FALSE}
+playerA
+tripAim <- adf[substr(adf$aimedat,1,1) == "t",]
+decimal <- nrow(tripAim[tripAim$aimedat == tripAim$bed,]) / nrow(tripAim)
+paste(round(100*decimal, 3), "%", sep="")
+
+playerB
+tripAim <- bdf[substr(bdf$aimedat,1,1) == "t",]
+decimal <- nrow(tripAim[tripAim$aimedat == tripAim$bed,]) / nrow(tripAim)
+paste(round(100*decimal, 3), "%", sep="")
+```
+
+Average on big triples
+
+```{r echo=FALSE}
+## Create a data frame to show these figures.
+t20aims <- c(nrow(adf[adf$aimedat== "t20",]),
+             nrow(bdf[bdf$aimedat== "t20",]))
+t20hits <- c(nrow(adf[adf$bed== "t20",]),
+             nrow(bdf[bdf$bed== "t20",]))
+t19aims <- c(nrow(adf[adf$aimedat== "t19",]),
+             nrow(bdf[bdf$aimedat== "t19",]))
+t19hits <- c(nrow(adf[adf$bed== "t19",]),
+             nrow(bdf[bdf$bed== "t19",]))
+t20average <- c(mean(adf[adf$aimed == "t20",]$dartScore),
+                mean(bdf[bdf$aimed == "t20",]$dartScore))
+t19average <- c(mean(adf[adf$aimed == "t19",]$dartScore),
+                mean(bdf[bdf$aimed == "t19",]$dartScore))
+```
+
+Fractions and percentages on each double

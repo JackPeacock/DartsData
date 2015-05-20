@@ -1,13 +1,29 @@
-## Set working directory
+---
+title: "JSON Match Statistics"
+author: "Jack Peacock"
+date: "20 May 2015"
+output: html_document
+---
+
+# Match Statistics Report
+
+```{r echo=FALSE, results=hide}
+## Set the working directory of the game you are interested in
+
 setwd("~/Documents/Darts Business/JSON Data/Premier League/Week 15/lewisanderson/")
-## Set the names of the players. Files should be in the form anderson.json, vangerwen.json, etc.
-## To create the json files run JSON.stringify(arrayA) and JSON.stringify(arrayB) in chrome console
-## The output will need manually copying and pasting into a new .json file
+
+## Set the name of the players
+
 playerA = "lewis"
 playerB = "anderson"
-library(rjson)
+
+## This following code does not need to be touched it will produce the statistics.
+
+library(rjson); library(Hmisc)
 AJSON <- fromJSON(file=paste(playerA, ".json", sep = ""))
 BJSON <- fromJSON(file=paste(playerB, ".json", sep = ""))
+
+## This function is needed to generate the data frames
 
 createDataFrame <- function(JSONList) {
         bed <- vector(); dartScore <- vector(); aimedat <- vector()
@@ -30,5 +46,25 @@ createDataFrame <- function(JSONList) {
         return(data.frame(number, leg, dartScore, bed, aimedat, sB4Dart, sAfDart, average, algorithm))
 }
 
-write.csv(createDataFrame(AJSON), file=paste(playerA, ".csv", sep=""), row.names=FALSE)
-write.csv(createDataFrame(BJSON), file=paste(playerB, ".csv", sep=""), row.names=FALSE)
+adf <- createDataFrame(AJSON)
+bdf <- createDataFrame(BJSON)
+```
+
+```{r echo=FALSE}
+paste("These are the Statisitcs for the match between", capitalize(playerA), capitalize(playerB))
+```
+
+## Player A
+
+Triple percentage
+
+```{r echo=FALSE}
+playerA
+
+
+
+```{r, echo=FALSE}
+plot(cars)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
